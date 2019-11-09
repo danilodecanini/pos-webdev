@@ -1,13 +1,19 @@
 {
-    "beer": [{
-        "id": 1,
-        "name": "beer 1",
-        "description": "Brazil"
+  "beer": [
+    {
+      "name": "Heineken",
+      "description": "teste",
+      "id": 1
     },
-{
-        "id": 2,
-        "name": "beer 2",
-        "description": "Brazil"
+    {
+      "name": "Budweiser",
+      "description": "esteeet",
+      "id": 2
+    },
+    {
+      "name": "Becker",
+      "description": "asdasdasd",
+      "id": 3
     }
-	]
+  ]
 }

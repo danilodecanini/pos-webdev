@@ -8,21 +8,34 @@ import { SidenavComponent } from './core/sidenav/sidenav.component';
 import { NavbarComponent } from './core/navbar/navbar.component';
 import { PagesModule } from './pages/pages.module';
 import { HttpClientModule }    from '@angular/common/http';
+import { CommonModule } from "@angular/common";
+import { BeerDetalheComponent } from './pages/beer-detalhe/beer-detalhe.component';
+import { BeerEditarComponent } from './pages/beer-editar/beer-editar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CardsComponent } from './core/components/cards/cards.component';
 
+/**
+ *  Esse App Module é responsável por todas as declarações e imports do componente principal da nossa aplicação
+ */
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
     SidenavComponent,
-
-    NavbarComponent
+    NavbarComponent,
+    BeerDetalheComponent,
+    BeerEditarComponent,
+    CardsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     PagesModule,
-    HttpClientModule
+    CommonModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

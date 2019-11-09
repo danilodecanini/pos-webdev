@@ -2,12 +2,17 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
-// import { Beer } from 'src/core/model/beer';
+import { Beer } from 'src/app/core/model/beer.model';
+
+/**
+ *  Esse é o nosso Service usado para consumir o nosso JSON Server, 
+ *  tento todas as operações de CRUD do Modelo da Cerveja
+ */
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
-const apiUrl = 'http://localhost:5000/api/beer';
+const apiUrl = 'http://localhost:3000/beer';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +20,10 @@ const apiUrl = 'http://localhost:5000/api/beer';
 export class ApiService {
 
   constructor(private http: HttpClient) { }
+
+  /**
+  *  Método para pegar todas as beers do nosso "Back-end"
+  */
 
   getBeers (): Observable<Beer[]> {
     return this.http.get<Beer[]>(apiUrl)
@@ -24,6 +33,11 @@ export class ApiService {
       );
   }
 
+  /**
+  *  Método para pegar somente um registro de beer do nosso "Back-end",
+  *  passando uma ID
+  */
+
   getBeer(id: number): Observable<Beer> {
     const url = `${apiUrl}/${id}`;
     return this.http.get<Beer>(url).pipe(
@@ -32,13 +46,20 @@ export class ApiService {
     );
   }
 
+  /**
+  *  Método para adicionar um registro no nosso "Back-end"
+  */
+
   addBeer (beer): Observable<Beer> {
-    return this.http.post<Beer>(apiUrl, beer, httpOptions).pipe(
-      
-      tap((beer: Beer) => console.log(`adicionou a cerveja com w/ id=${beer._id}`)),
+    return this.http.post<Beer>(apiUrl, beer, httpOptions).pipe(      
+        tap((beer: Beer) => console.log(`adicionou a cerveja com w/ id=${beer.id}`)),
       catchError(this.handleError<Beer>('addBeer'))
     );
   }
+
+  /**
+  *  Método para atualizar um registro do nosso "Back-end"
+  */
 
   updateBeer(id, beer): Observable<any> {
     const url = `${apiUrl}/${id}`;
@@ -48,6 +69,10 @@ export class ApiService {
     );
   }
 
+  /**
+  *  Método para deletar um registro do nosso "Back-end"
+  */
+
   deleteBeer (id): Observable<Beer> {
     const url = `${apiUrl}/delete/${id}`;
 
@@ -56,6 +81,10 @@ export class ApiService {
       catchError(this.handleError<Beer>('deleteBeer'))
     );
   }
+
+  /**
+  *  Método para tratar os erros ao realizar alguma operação do nosso "Back-end"
+  */
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

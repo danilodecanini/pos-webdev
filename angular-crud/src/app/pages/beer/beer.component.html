@@ -1,6 +1,24 @@
 <div>
-  <div class="uk-child-width-expand@s uk-text-center " uk-grid>
-         
+  <div class="tabela uk-child-width-expand@s uk-text-left " uk-grid>
+
+      <table class="uk-table uk-table-hover uk-table-small uk-table-middle">
+          <caption></caption>
+          <thead>
+              <tr>
+                  <th>Nome da Cerveja</th>
+                  <th>Ações</th>
+              </tr>
+          </thead>          
+          <tbody>
+              <tr *ngFor="let beer of beers">
+                  <td>{{beer.name }}</td>
+                  <td>
+                      <button class="uk-button uk-button-primary uk-button-small" [routerLink]="['/beer-detalhe', beer.id]"> Detalhar</button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+
   </div>
 </div>
 

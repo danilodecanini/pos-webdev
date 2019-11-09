@@ -1,0 +1,18 @@
+<div class="container">
+
+    <div class="example-loading-shade"
+         *ngIf="isLoadingResults">
+       <!-- loading vai aqui -->
+    </div>
+    <br>
+    <div class="button-row">
+      <button class="uk-button uk-button-default uk-button-small" [routerLink]="['/beer']">Voltar</button>
+    </div>
+    <br><br>
+    
+    <button  class="uk-button uk-button-primary uk-button-small" [routerLink]="['/beer-editar', beer.id]"> Editar</button>
+    <button class="uk-button uk-button-danger uk-button-small" (click)="deleteBeer(beer.id)"> Excluir</button>
+
+    <app-cards titulo="{{beer.name}}" text="{{beer.description}}"></app-cards>   
+    
+</div>

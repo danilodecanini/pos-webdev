@@ -2,9 +2,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { BeerComponent } from './beer.component';
 import { BeerFormComponent } from './beer-form/beer-form.component';
+import { BeerDetalheComponent } from '../beer-detalhe/beer-detalhe.component';
+import { BeerEditarComponent } from '../beer-editar/beer-editar.component';
 
 /**
- *  O Routing module serve para o gerenciamento de rotas dos componets do angular
+ *  Esse routing module é responsável por todas as rotas da nossa aplicação
  */
 
 export const beerRoutes: Routes = [
